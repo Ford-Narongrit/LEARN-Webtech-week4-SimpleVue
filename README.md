@@ -1,20 +1,13 @@
-# Simple Vue js
-## payment-system
-
-## Project setup
+# Simple Vue js -> payment-system
+### Project setup
 ```
 npm install
 ```
+### development mode
+* ``npm run serve``
+* see the result at http://localhost:8080/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
+### create production 
 ```
 npm run build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
