@@ -16,5 +16,6 @@ npm run build
 * [x] add open JSON on Axios
 * [x] show data in table
 * [x] calculat total income, expenditure and balance
+* [x] have feature to add new data
 * [ ] show data in Chart
 * [ ] add CSS to page
