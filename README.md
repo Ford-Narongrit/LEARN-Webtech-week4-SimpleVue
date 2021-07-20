@@ -1,4 +1,5 @@
-# payment-system
+# Simple Vue js
+## payment-system
 
 ## Project setup
 ```
