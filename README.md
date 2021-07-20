@@ -11,3 +11,10 @@ npm install
 ```
 npm run build
 ```
+
+## TODO
+* [x] add open JSON on Axios
+* [x] show data in table
+* [x] calculat total income, expenditure and balance
+* [ ] show data in Chart
+* [ ] add CSS to page
