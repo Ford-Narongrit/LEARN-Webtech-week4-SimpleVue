@@ -3,14 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+//css
+import './assets/css/tailwind.css'
+//Axios
 import VueAxios from 'vue-axios'
 import Axios from 'axios'
+//Other component
+import VCalendar from 'v-calendar'
 
 Vue.use(VueAxios, Axios);
-
-import moment from 'moment'
-Vue.prototype.moment = moment
-
+Vue.use(VCalendar, {});
 
 Vue.config.productionTip = false
 

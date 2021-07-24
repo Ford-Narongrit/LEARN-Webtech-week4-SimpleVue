@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap");
+
+.font-Oto {
+  font-family: "Otomanopee One", sans-serif;
+}
+
+.font-mitr {
+  font-family: "Mitr", sans-serif;
+}

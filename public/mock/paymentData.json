@@ -1,144 +1,58 @@
 {
     "data": [
         {
-            "date": "1/07/2021",
-            "income": 150,
-            "incomeAbout": "แม่ให้ค่าขนม",
-            "expenditure": 100,
-            "expenditureAbout": "ซื้อข้าว"
+            "date": "24/07/2021",
+            "about": "ได้รับเงินค่าขนม",
+            "amount": 100,
+            "status": "income"
         },
         {
-            "date": "2/07/2021",
-            "income": 100,
-            "incomeAbout": "เจอตกที่พื้น",
-            "expenditure": 0,
-            "expenditureAbout": "ไม่มี"
+            "date": "24/07/2021",
+            "about": "ซื้อขนม",
+            "amount": 50,
+            "status": "outcome"
         },
         {
-            "date": "3/07/2021",
-            "income": 150,
-            "incomeAbout": "พ่อให้ค่าขนม",
-            "expenditure": 150,
-            "expenditureAbout": "เติมเงินเกม"
+            "date": "25/07/2021",
+            "about": "ซื้อขนม",
+            "amount": 20,
+            "status": "outcome"
         },
         {
-            "date": "4/07/2021",
-            "income": 20,
-            "incomeAbout": "เงินทอนที่ไม่ได้คืน",
-            "expenditure": 40,
-            "expenditureAbout": "ซื้อข้าว"
+            "date": "25/07/2021",
+            "about": "เจอเงินตก",
+            "amount": 100,
+            "status": "income"
         },
         {
-            "date": "5/07/2021",
-            "income": 30,
-            "incomeAbout": "เงินทอนที่ไม่ได้คืน",
-            "expenditure": 40,
-            "expenditureAbout": "ซื้อข้าว"
+            "date": "25/07/2021",
+            "about": "ทำงานพิเศษ",
+            "amount": 500,
+            "status": "income"
         },
         {
-            "date": "6/07/2021",
-            "income": 150,
-            "incomeAbout": "แม่ให้ค่าขนม",
-            "expenditure": 100,
-            "expenditureAbout": "ซื้อข้าว"
+            "date": "25/07/2021",
+            "about": "ซื้อ pizza",
+            "amount": 399,
+            "status": "outcome"
         },
         {
-            "date": "7/07/2021",
-            "income": 100,
-            "incomeAbout": "พ่อให้ค่าขนม",
-            "expenditure": 40,
-            "expenditureAbout": "ซื้อข้าว"
+            "date": "26/07/2021",
+            "about": "ซื้อขนม",
+            "amount": 75,
+            "status": "outcome"
         },
         {
-            "date": "8/07/2021",
-            "income": 140,
-            "incomeAbout": "แม่ให้ค่าขนม",
-            "expenditure": 40,
-            "expenditureAbout": "ซื้อข้าว"
+            "date": "26/07/2021",
+            "about": "ซื้อขนม",
+            "amount": 100,
+            "status": "outcome"
         },
         {
-            "date": "9/07/2021",
-            "income": 20,
-            "incomeAbout": "เงินทอนที่ไม่ได้คืน",
-            "expenditure": 200,
-            "expenditureAbout": "เติมเงินเกม"
-        },
-        {
-            "date": "10/07/2021",
-            "income": 50,
-            "incomeAbout": "เงินทอนที่ไม่ได้คืน",
-            "expenditure": 100,
-            "expenditureAbout": "ซื้อข้าว"
-        },
-        {
-            "date": "11/07/2021",
-            "income": 150,
-            "incomeAbout": "พ่อให้ค่าขนม",
-            "expenditure": 40,
-            "expenditureAbout": "ซื้อข้าว"
-        },
-        {
-            "date": "12/07/2021",
-            "income": 100,
-            "incomeAbout": "แม่ให้ค่าขนม",
-            "expenditure": 40,
-            "expenditureAbout": "ซื้อข้าว"
-        },
-        {
-            "date": "13/07/2021",
-            "income": 50,
-            "incomeAbout": "เจอตกที่พื้น",
-            "expenditure": 0,
-            "expenditureAbout": "ไม่มี"
-        },
-        {
-            "date": "14/07/2021",
-            "income": 400,
-            "incomeAbout": "รายได้จากการทำงาน",
-            "expenditure": 300,
-            "expenditureAbout": "เติมเงินเกม"
-        },
-        {
-            "date": "15/07/2021",
-            "income": 140,
-            "incomeAbout": "พ่อให้ค่าขนม",
-            "expenditure": 100,
-            "expenditureAbout": "ซื้อข้าว"
-        },
-        {
-            "date": "16/07/2021",
-            "income": 100,
-            "incomeAbout": "พ่อให้ค่าขนม",
-            "expenditure": 40,
-            "expenditureAbout": "ซื้อขนม"
-        },
-        {
-            "date": "17/07/2021",
-            "income": 150,
-            "incomeAbout": "แม่ให้ค่าขนม",
-            "expenditure": 40,
-            "expenditureAbout": "ซื้อขนม"
-        },
-        {
-            "date": "18/07/2021",
-            "income": 120,
-            "incomeAbout": "พ่อให้ค่าขนม",
-            "expenditure": 100,
-            "expenditureAbout": "ซื้อข้าว"
-        },
-        {
-            "date": "19/07/2021",
-            "income": 500,
-            "incomeAbout": "รายได้จากการทำงาน",
-            "expenditure": 500,
-            "expenditureAbout": "ซื้อของเล่น"
-        },
-        {
-            "date": "20/07/2021",
-            "income": 10,
-            "incomeAbout": "เจอตกที่พื้น",
-            "expenditure": 0,
-            "expenditureAbout": "ไม่มี"
+            "date": "26/07/2021",
+            "about": "ทำงานพิเศษ",
+            "amount": 500,
+            "status": "income"
         }
     ]
 }

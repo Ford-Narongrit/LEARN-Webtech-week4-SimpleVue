@@ -17,5 +17,5 @@ npm run build
 * [x] show data in table
 * [x] calculat total income, expenditure and balance
 * [x] have feature to add new data
+* [x] add CSS to page
 * [ ] show data in Chart
-* [ ] add CSS to page

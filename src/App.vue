@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
+    <div id="nav" class="bg-gray-800">
+      <router-link to="/" class="text-5xl font-Oto text-blue-50">Payment-System</router-link>
     </div>
-    <router-view/>
+    <div class="container mx-auto py-14">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -18,14 +20,13 @@
 
 #nav {
   padding: 30px;
+  // a {
+  //   font-weight: bold;
+  //   color: #2c3e50;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  //   &.router-link-exact-active {
+  //     color: #42b983;
+  //   }
+  // }
 }
 </style>

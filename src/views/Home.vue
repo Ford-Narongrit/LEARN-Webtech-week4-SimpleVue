@@ -1,6 +1,5 @@
 <template>
   <div>
-    this is Homepage
     <payment-table />
   </div>
 </template>
