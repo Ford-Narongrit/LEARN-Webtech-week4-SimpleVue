@@ -18,4 +18,5 @@ npm run build
 * [x] calculat total income, expenditure and balance
 * [x] have feature to add new data
 * [x] add CSS to page
-* [ ] show data in Chart
+* [x] show data in Chart
+* [ ] show chart sort by date
