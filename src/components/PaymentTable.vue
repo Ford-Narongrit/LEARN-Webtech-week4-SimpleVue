@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="text-2xl text-gray-700 p-10">
+      balance:
+      <span class="text-gray-800 font-bold">{{
+        balance.income - balance.outcome
+      }}</span>
+    </div>
     <!-- table -->
     <div class="inline-flex pb-10">
       <table class="table-auto font-mitr">
@@ -48,11 +54,27 @@ export default {
       default: null,
     },
   },
+  computed: {
+    balance: function() {
+      const balance = {
+        income: 0,
+        outcome: 0,
+      }
+      this.payment.forEach((element) => {
+        if (element.status === "income") {
+          balance.income += element.amount;
+        } else {
+          balance.outcome += element.amount;
+        }
+      });
+      return balance
+    },
+  },
   methods: {
-    reFormat(date){
-      return moment(new Date(date)).format('DD/MM/YYYY');
-    }
-  }
+    reFormat(date) {
+      return moment(new Date(date)).format("DD/MM/YYYY");
+    },
+  },
 };
 </script>
 

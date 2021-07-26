@@ -20,5 +20,5 @@ npm run build
 * [x] add CSS to page
 * [x] show data in Chart
 * [x] sort date
-* [ ] show chart sort by date
+* [x] show chart sort by date
 * [ ] alert box show status action

@@ -3,21 +3,50 @@
     <!-- chart -->
     <doughnut-chart :chart-data="datacollection" class="py-5" />
 
-    <!-- balance -->
-    <div class="text-2xl text-gray-700 p-10">
-      balance:
-      <span class="text-gray-800 font-bold">{{
-        balance.income - balance.outcome
-      }}</span>
+    <!-- select Date -->
+    <div class="flex justify-center">
+      <!-- startDate -->
+      <div class="mx-2">
+        <label for="datepicker" class="block text-left text-center"
+          >Select startDate</label
+        >
+        <v-date-picker v-model="selected.startDate" :model-config="modelConfig">
+          <template v-slot="{ inputValue, inputEvents }">
+            <input
+              class="bg-white border px-2 py-1 rounded w-full"
+              placeholder="MM / DD /YYYY"
+              :value="inputValue"
+              v-on="inputEvents"
+            />
+          </template>
+        </v-date-picker>
+      </div>
+      <!-- endDate -->
+      <div class="mx-2">
+        <label for="datepicker" class="block text-left text-center"
+          >Select endDate</label
+        >
+        <v-date-picker v-model="selected.endDate" :model-config="modelConfig">
+          <template v-slot="{ inputValue, inputEvents }">
+            <input
+              class="bg-white border px-2 py-1 rounded w-full"
+              placeholder="MM / DD /YYYY"
+              :value="inputValue"
+              v-on="inputEvents"
+            />
+          </template>
+        </v-date-picker>
+      </div>
     </div>
+    <div>
+      <button @click="updateChart()" class="my-button my-2">Show</button>
+    </div>
+
     <!-- table -->
     <payment-table :payment="sortedPayment" />
 
     <!-- add button -->
-    <button
-      @click="isAdd = true"
-      class="bg-gray-800 text-gray-100 py-4 px-10 font-mitr font-bold text-xl rounded-xl hover:bg-gray-700"
-    >
+    <button @click="isAdd = true" class="my-button">
       บันทึกเพิ่ม +
     </button>
 
@@ -79,19 +108,8 @@
             class="bg-white border px-2 py-1 rounded w-full"
           />
         </div>
-
-        <button
-          @click="saveData()"
-          class="bg-gray-800 text-gray-100 mx-3 py-4 px-10 font-mitr font-bold text-xl  rounded-xl hover:bg-gray-700"
-        >
-          บันทึก
-        </button>
-        <button
-          @click="clearform()"
-          class="bg-gray-800 text-gray-100 mx-3 py-4 px-10 font-mitr font-bold text-xl rounded-xl hover:bg-gray-700"
-        >
-          ยกเลิก
-        </button>
+        <button @click="saveData()" class="my-button">บันทึก</button>
+        <button @click="clearform()" class="my-button">ยกเลิก</button>
       </div>
     </div>
   </div>
@@ -106,10 +124,6 @@ export default {
   data() {
     return {
       payment: [],
-      balance: {
-        income: 0,
-        outcome: 0,
-      },
       isAdd: false,
       form: {
         date: null,
@@ -122,6 +136,10 @@ export default {
         mask: "MM-DD-YYYY",
       },
       datacollection: null,
+      selected: {
+        startDate: null,
+        endDate: null,
+      },
     };
   },
   components: {
@@ -138,14 +156,33 @@ export default {
       });
       return this.payment;
     },
+    filterDate: function() {
+      if (this.selected.startDate === null || this.selected.endDate === null) {
+        return this.payment;
+      }
+      const startDate = new Date(this.selected.startDate);
+      const endDate = new Date(this.selected.endDate);
+
+      return this.payment.filter((item) => {
+        const itemDate = new Date(item.date);
+        if (startDate !== null && endDate !== null) {
+          return startDate <= itemDate && itemDate <= endDate;
+        }
+        if (startDate !== null && endDate === null) {
+          return startDate <= itemDate;
+        }
+        if (startDate === null && endDate !== null) {
+          return itemDate <= endDate;
+        }
+        return true;
+      });
+    },
   },
   methods: {
     async fetchData() {
       await PaymentStore.dispatch("fetchData");
       this.payment = PaymentStore.getters.paymentData;
-
-      this.calBalance();
-      this.updateTable();
+      this.updateChart();
     },
     async saveData() {
       let payload = {
@@ -156,20 +193,7 @@ export default {
       };
       await PaymentStore.dispatch("postData", payload);
       this.clearform();
-
-      this.calBalance();
-      this.updateTable();
-    },
-    calBalance() {
-      this.balance.income = 0;
-      this.balance.outcome = 0;
-      this.payment.forEach((element) => {
-        if (element.status === "income") {
-          this.balance.income += element.amount;
-        } else {
-          this.balance.outcome += element.amount;
-        }
-      });
+      this.updateChart();
     },
     clearform() {
       this.isAdd = false;
@@ -177,8 +201,21 @@ export default {
       this.form.status = "";
       this.form.amount = 0;
       this.form.about = "";
+      this.selected.startDate = null;
+      this.selected.endDate = null;
     },
-    updateTable() {
+    updateChart() {
+      const balance = {
+        income: 0,
+        outcome: 0,
+      };
+      this.filterDate.forEach((element) => {
+        if (element.status === "income") {
+          balance.income += element.amount;
+        } else {
+          balance.outcome += element.amount;
+        }
+      });
       this.datacollection = {
         labels: ["income", "outcome"],
         datasets: [
@@ -189,7 +226,7 @@ export default {
               "rgba(52, 211, 153, 0.2)",
               "rgba(248, 113, 113, 0.2)",
             ],
-            data: [this.balance.income, this.balance.outcome],
+            data: [balance.income, balance.outcome],
           },
         ],
       };

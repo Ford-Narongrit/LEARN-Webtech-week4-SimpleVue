@@ -12,3 +12,7 @@
 .font-mitr {
   font-family: "Mitr", sans-serif;
 }
+
+.my-button {
+  @apply bg-gray-800 text-gray-100 mx-3 py-4 px-10 font-mitr font-bold text-xl  rounded-xl hover:bg-gray-700
+}
