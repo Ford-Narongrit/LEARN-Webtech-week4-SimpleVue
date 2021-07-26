@@ -7,8 +7,8 @@
     <div class="flex justify-center">
       <!-- startDate -->
       <div class="mx-2">
-        <label for="datepicker" class="block text-left text-center"
-          >Select startDate</label
+        <label for="datepicker" class="block text-center my-label"
+          >Start</label
         >
         <v-date-picker v-model="selected.startDate" :model-config="modelConfig">
           <template v-slot="{ inputValue, inputEvents }">
@@ -23,8 +23,8 @@
       </div>
       <!-- endDate -->
       <div class="mx-2">
-        <label for="datepicker" class="block text-left text-center"
-          >Select endDate</label
+        <label for="datepicker" class="block text-center my-label"
+          >End</label
         >
         <v-date-picker v-model="selected.endDate" :model-config="modelConfig">
           <template v-slot="{ inputValue, inputEvents }">
@@ -38,12 +38,15 @@
         </v-date-picker>
       </div>
     </div>
-    <div>
-      <button @click="updateChart()" class="my-button my-2">Show</button>
+    <div class="my-2">
+      <button @click="updateChart()" class="my-button">Show</button>
+      <button @click="clearform(), updateChart()" class="my-button-cancel">
+        Clear
+      </button>
     </div>
 
     <!-- table -->
-    <payment-table :payment="sortedPayment" />
+    <payment-table :payment="tableData" />
 
     <!-- add button -->
     <button @click="isAdd = true" class="my-button">
@@ -62,12 +65,12 @@
       <div class="bg-gray-300 p-10 rounded-lg z-10 animate-fade-in-down">
         <!-- date -->
         <div class="pb-4">
-          <label for="datepicker" class="block text-left">Select Date</label>
+          <label for="datepicker" class="block text-left my-label">Select Date</label>
           <v-date-picker v-model="form.date" :model-config="modelConfig">
             <template v-slot="{ inputValue, inputEvents }">
               <input
                 class="bg-white border px-2 py-1 rounded w-full"
-                placeholder="DD /MM /YYYY"
+                placeholder="MM /DD /YYYY"
                 :value="inputValue"
                 v-on="inputEvents"
               />
@@ -77,7 +80,7 @@
 
         <!-- status -->
         <div class="pb-4">
-          <label for="status" class="block text-left">Status</label>
+          <label for="status" class="block text-left my-label">Status</label>
           <select
             v-model="form.status"
             name="status"
@@ -91,7 +94,7 @@
 
         <!-- amount -->
         <div class="pb-4">
-          <label for="amount" class="block text-left">Amount</label>
+          <label for="amount" class="block text-left my-label">Amount</label>
           <input
             v-model="form.amount"
             type="number"
@@ -101,15 +104,15 @@
 
         <!-- about -->
         <div class="pb-4">
-          <label for="about" class="block text-left">About</label>
+          <label for="about" class="block text-left my-label">About</label>
           <input
             type="text"
             v-model="form.about"
             class="bg-white border px-2 py-1 rounded w-full"
           />
         </div>
-        <button @click="saveData()" class="my-button">บันทึก</button>
-        <button @click="clearform()" class="my-button">ยกเลิก</button>
+        <button @click="saveData()" class="my-button-confirm">บันทึก</button>
+        <button @click="clearform()" class="my-button-cancel">ยกเลิก</button>
       </div>
     </div>
   </div>
@@ -124,6 +127,7 @@ export default {
   data() {
     return {
       payment: [],
+      tableData: [],
       isAdd: false,
       form: {
         date: null,
@@ -156,14 +160,14 @@ export default {
       });
       return this.payment;
     },
-    filterDate: function() {
+    filterData: function() {
       if (this.selected.startDate === null || this.selected.endDate === null) {
-        return this.payment;
+        return this.sortedPayment;
       }
       const startDate = new Date(this.selected.startDate);
       const endDate = new Date(this.selected.endDate);
 
-      return this.payment.filter((item) => {
+      return this.sortedPayment.filter((item) => {
         const itemDate = new Date(item.date);
         if (startDate !== null && endDate !== null) {
           return startDate <= itemDate && itemDate <= endDate;
@@ -209,13 +213,14 @@ export default {
         income: 0,
         outcome: 0,
       };
-      this.filterDate.forEach((element) => {
+      this.filterData.forEach((element) => {
         if (element.status === "income") {
           balance.income += element.amount;
         } else {
           balance.outcome += element.amount;
         }
       });
+      this.tableData = this.filterData;
       this.datacollection = {
         labels: ["income", "outcome"],
         datasets: [

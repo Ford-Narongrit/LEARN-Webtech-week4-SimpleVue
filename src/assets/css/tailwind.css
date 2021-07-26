@@ -16,3 +16,15 @@
 .my-button {
   @apply bg-gray-800 text-gray-100 mx-3 py-4 px-10 font-mitr font-bold text-xl  rounded-xl hover:bg-gray-700
 }
+
+.my-button-cancel {
+  @apply bg-gray-800 text-gray-100 mx-3 py-4 px-10 font-mitr font-bold text-xl  rounded-xl hover:bg-red-700
+}
+
+.my-button-confirm {
+  @apply bg-gray-800 text-gray-100 mx-3 py-4 px-10 font-mitr font-bold text-xl  rounded-xl hover:bg-green-700
+}
+
+.my-label {
+  @apply font-mitr uppercase font-bold text-xl
+}

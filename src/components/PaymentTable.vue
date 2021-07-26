@@ -10,7 +10,7 @@
     <div class="inline-flex pb-10">
       <table class="table-auto font-mitr">
         <thead>
-          <tr class="bg-gray-800 text-gray-100 uppercase">
+          <tr class="bg-gray-800 text-gray-100 my-label">
             <th class="py-3 px-24 text-center">date</th>
             <th class="py-3 px-24 text-center">status</th>
             <th class="py-3 px-24 text-center">amount</th>
