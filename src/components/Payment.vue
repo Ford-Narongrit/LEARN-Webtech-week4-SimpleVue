@@ -7,9 +7,7 @@
     <div class="flex justify-center">
       <!-- startDate -->
       <div class="mx-2">
-        <label for="datepicker" class="block text-center my-label"
-          >Start</label
-        >
+        <label for="datepicker" class="block text-center my-label">Start</label>
         <v-date-picker v-model="selected.startDate" :model-config="modelConfig">
           <template v-slot="{ inputValue, inputEvents }">
             <input
@@ -23,9 +21,7 @@
       </div>
       <!-- endDate -->
       <div class="mx-2">
-        <label for="datepicker" class="block text-center my-label"
-          >End</label
-        >
+        <label for="datepicker" class="block text-center my-label">End</label>
         <v-date-picker v-model="selected.endDate" :model-config="modelConfig">
           <template v-slot="{ inputValue, inputEvents }">
             <input
@@ -65,7 +61,9 @@
       <div class="bg-gray-300 p-10 rounded-lg z-10 animate-fade-in-down">
         <!-- date -->
         <div class="pb-4">
-          <label for="datepicker" class="block text-left my-label">Select Date</label>
+          <label for="datepicker" class="block text-left my-label"
+            >Select Date</label
+          >
           <v-date-picker v-model="form.date" :model-config="modelConfig">
             <template v-slot="{ inputValue, inputEvents }">
               <input
@@ -192,12 +190,21 @@ export default {
       let payload = {
         date: this.form.date,
         status: this.form.status,
-        amount: parseInt(this.form.amount),
+        amount: parseFloat(this.form.amount),
         about: this.form.about,
       };
+      if (
+        payload.date === null ||
+        payload.status === "" ||
+        payload.amount === 0
+      ) {
+        this.alertMessage("error", "Invalid input");
+        return;
+      }
       await PaymentStore.dispatch("postData", payload);
       this.clearform();
       this.updateChart();
+      this.alertMessage("success", "Save success");
     },
     clearform() {
       this.isAdd = false;
@@ -220,6 +227,10 @@ export default {
           balance.outcome += element.amount;
         }
       });
+      if (this.filterData.length === 0) {
+        this.alertMessage("error", "Oops! can't find data");
+        return;
+      }
       this.tableData = this.filterData;
       this.datacollection = {
         labels: ["income", "outcome"],
@@ -235,6 +246,33 @@ export default {
           },
         ],
       };
+      this.alertMessage("info", "Update")
+    },
+    alertMessage(status, msg) {
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", this.$swal.stopTimer);
+          toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+        },
+      });
+      let backgroundColor = "#fff";
+      if (status === "success") {
+        backgroundColor = "#D1FAE5";
+      } else if (status === "error") {
+        backgroundColor = "#FEE2E2";
+      } else if (status === "info") {
+        backgroundColor = "#EFF6FF";
+      }
+      Toast.fire({
+        icon: status,
+        title: msg,
+        background: backgroundColor,
+      });
     },
   },
 };

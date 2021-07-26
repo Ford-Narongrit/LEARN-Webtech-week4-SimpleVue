@@ -14,9 +14,22 @@ module.exports = {
             transform: "translateY(0)",
           },
         },
+        "slide-in-right": {
+          "0%": {
+            webkitTransform: "translateX(1000px)",
+            transform: "translateX(1000px)",
+            opacity: "0",
+          },
+          "100%": {
+            webkitTransform: "translateX(0)",
+            transform: "translateX(0)",
+            opacity: "1",
+          },
+        },
       },
       animation: {
         "fade-in-down": "fade-in-down 0.5s ease-out",
+        "slide-in-right": "slide-in-right 0.5s",
       },
     },
   },
