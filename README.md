@@ -19,4 +19,6 @@ npm run build
 * [x] have feature to add new data
 * [x] add CSS to page
 * [x] show data in Chart
+* [x] sort date
 * [ ] show chart sort by date
+* [ ] alert box show status action

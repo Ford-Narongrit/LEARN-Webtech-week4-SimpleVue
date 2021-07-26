@@ -11,7 +11,7 @@
       }}</span>
     </div>
     <!-- table -->
-    <payment-table :payment="payment" />
+    <payment-table :payment="sortedPayment" />
 
     <!-- add button -->
     <button
@@ -26,7 +26,10 @@
       v-if="isAdd"
       class="justify-center items-center flex fixed inset-0 z-0 outline-none focus:outline-none"
     >
-      <button class="bg-black w-screen h-screen opacity-50 absolute cursor-default" @click="clearform()"></button>
+      <button
+        class="bg-black w-screen h-screen opacity-50 absolute cursor-default"
+        @click="clearform()"
+      ></button>
       <div class="bg-gray-300 p-10 rounded-lg z-10 animate-fade-in-down">
         <!-- date -->
         <div class="pb-4">
@@ -89,7 +92,6 @@
         >
           ยกเลิก
         </button>
-        
       </div>
     </div>
   </div>
@@ -117,7 +119,7 @@ export default {
       },
       modelConfig: {
         type: "string",
-        mask: "DD/MM/YYYY",
+        mask: "MM-DD-YYYY",
       },
       datacollection: null,
     };
@@ -128,6 +130,14 @@ export default {
   },
   created() {
     this.fetchData();
+  },
+  computed: {
+    sortedPayment: function() {
+      this.payment.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+      });
+      return this.payment;
+    },
   },
   methods: {
     async fetchData() {
@@ -163,7 +173,7 @@ export default {
     },
     clearform() {
       this.isAdd = false;
-      this.form.selectedDate = null;
+      this.form.date = null;
       this.form.status = "";
       this.form.amount = 0;
       this.form.about = "";

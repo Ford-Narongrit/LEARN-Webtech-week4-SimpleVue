@@ -11,6 +11,7 @@
     "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
     "postcss": "^7.0.36",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
     "v-calendar": "^2.3.1",

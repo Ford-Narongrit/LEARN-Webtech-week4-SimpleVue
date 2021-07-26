@@ -18,7 +18,7 @@
             class="hover:bg-gray-400"
             :class="[index % 2 === 0 ? 'bg-gray-100' : 'bg-gray-300']"
           >
-            <td class="py-3 px-6 text-center">{{ item.date }}</td>
+            <td class="py-3 px-6 text-center">{{ reFormat(item.date) }}</td>
             <td class="py-3 px-6 text-center">
               <span
                 class="rounded-lg px-2"
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   props: {
     payment: {
@@ -46,6 +48,11 @@ export default {
       default: null,
     },
   },
+  methods: {
+    reFormat(date){
+      return moment(new Date(date)).format('DD/MM/YYYY');
+    }
+  }
 };
 </script>
 

@@ -1,61 +1,61 @@
 {
     "data": [
         {
-            "date": "24/07/2021",
+            "date": "07-24-2021",
             "about": "ได้รับเงินค่าขนม",
             "amount": 100,
             "status": "income"
         },
         {
-            "date": "24/07/2021",
+            "date": "07-24-2021",
             "about": "ซื้อขนม",
             "amount": 50,
             "status": "outcome"
         },
         {
-            "date": "25/07/2021",
+            "date": "07-25-2021",
             "about": "ซื้อขนม",
             "amount": 20,
             "status": "outcome"
         },
         {
-            "date": "25/07/2021",
+            "date": "07-25-2021",
             "about": "เจอเงินตก",
             "amount": 100,
             "status": "income"
         },
         {
-            "date": "25/07/2021",
+            "date": "07-25-2021",
             "about": "ทำงานพิเศษ",
             "amount": 500,
             "status": "income"
         },
         {
-            "date": "25/07/2021",
+            "date": "07-25-2021",
             "about": "ซื้อ pizza",
             "amount": 399,
             "status": "outcome"
         },
         {
-            "date": "26/07/2021",
+            "date": "07-26-2021",
             "about": "ซื้อขนม",
             "amount": 75,
             "status": "outcome"
         },
         {
-            "date": "26/07/2021",
+            "date": "07-26-2021",
             "about": "ซื้อขนม",
             "amount": 100,
             "status": "outcome"
         },
         {
-            "date": "26/07/2021",
+            "date": "07-26-2021",
             "about": "ทำงานพิเศษ",
             "amount": 500,
             "status": "income"
         },
         {
-            "date": "26/07/2021",
+            "date": "07-26-2021",
             "about": "ทำงานพิเศษ",
             "amount": 250,
             "status": "outcome"
